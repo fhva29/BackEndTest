@@ -9,6 +9,6 @@ def get_dividends(request, symbol, year):
             serialized_data = serialize_dividend(symbol, year)
             return JsonResponse({"success": True, "data": serialized_data}, status=200)
         else:
-            return JsonResponse(response)
+            return JsonResponse(response, status=400)
     else:
         return JsonResponse({"error": f"Method {request.method} not allowed!"}, status=405)
